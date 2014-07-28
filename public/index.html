@@ -18,6 +18,20 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
 
+    <!-- Angular -->
+    <script src="/libs/angular/angular.min.js"></script>
+    <script src="/libs/angular-resource/angular-resource.min.js"></script>
+    <script src="/libs/angular-route/angular-route.min.js"></script>
+    <script src="/libs/angular-ui-date/src/date.js"></script>
+    <script src="/libs/angular-ui-sortable/sortable.min.js"></script>
+    <script src="/libs/ng-file-upload/angular-file-upload.js"></script>
+
+    <!-- App -->
+    <script src="app/app.js"></script>
+    <script src="app/controllers/main.js"></script>
+    <script src="app/controllers/dashboard.js"></script>
+    <script src="app/controllers/products.js"></script>
+
 </head>
 <body ng-controller="MainController">
     
@@ -39,16 +53,22 @@
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li>
+                    <li ng-class="{active: isActive('/')}">
                         <a href="#/dashboard">
                             <i class="fa fa-dashboard"></i>&nbsp; Dashboard
                         </a>
                     </li>
-                    <li>
-                        <a href="#/categories">
-                            <i class="fa fa-archive"></i>&nbsp; Categories
+                    <li ng-class="{active: isActive('/products')}">
+                        <a href="#/products">
+                            <i class="fa fa-cube"></i>&nbsp; Products
                         </a>
                     </li>
+                    <!-- Add new menu item -->
+                    <!-- <li ng-class="{active: isActive('/users')}">
+                        <a href="#/users">
+                            <i class="fa fa-users"></i>&nbsp; Users
+                        </a>
+                    </li> -->
                     <li>
                         <a href="">
                             <i class="fa fa-sign-out"></i>&nbsp; Sign Out 
@@ -59,6 +79,7 @@
         </div>
     </div>
 
+    <!-- Content -->
     <div ng-view></div>
 
 </body>
