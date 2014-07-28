@@ -1,4 +1,57 @@
+
 <div class="container">
-    <h3>Products</h3>
-    <p>Coming soon</p>
+    <h3 class="page-header">Products</h3>
+
+
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="btn-group pull-left">
+                <button 
+                    ng-click="status='active'" 
+                    ng-class="{active:status=='active'}" 
+                    class="btn btn-default">Active</button>
+                <button 
+                    ng-click="status='staging'" 
+                    ng-class="{active:status=='staging'}" 
+                    class="btn btn-default">Staging</button>
+                <button 
+                    ng-click="status='inactive'" 
+                    ng-class="{active:status=='inactive'}" 
+                    class="btn btn-default">Inactive</button>
+            </div>
+
+
+            <a href="#/products/create" class="btn btn-primary pull-right">
+                <i class="fa fa-rocket fa-fw"></i> Create Product
+            </a>
+        </div>
+
+        <table class="table table-striped panel-body">
+            <thead>
+                <tr>
+                    <th>SKU</th>
+                    <th>Product Name</th>
+                    <th>Qty</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="product in products | filter: status | orderBy: '-sku'">
+                    <td>{{ product.sku }}</td>
+                    <td>
+                        <a href="#/products/{{ product._id }}">
+                            {{ product.name }}
+                            <span ng-if="!product.name"><i>Untitled</i></span>
+                        </a>
+                    </td>
+                    <!-- <td>{{ product.category[1] }}</td> -->
+                    <td><a href="/product/{{ product.slug }}" target="_blank">{{ product.slug }}</a></td>
+                    <td>${{ product.price }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
 </div>
